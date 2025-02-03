@@ -13,6 +13,8 @@ export class ListingPage implements OnInit {
 
   categories: Category[] = [];
   foods: Food[] = [];
+  cart: any[] = []; // Almacena los productos en el carrito
+
 
   constructor(private foodService: FoodService) { }
 
@@ -21,11 +23,24 @@ export class ListingPage implements OnInit {
     this.foods = this.foodService.getFoods();
   }
 
+   // Agregar productos al carrito
+   addToCart(product: any): void {
+    const existingItem = this.cart.find((item) => item.id === product.id);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      this.cart.push({ ...product, quantity: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(this.cart)); // Guardar el carrito
+    console.log(this.cart);
+    
+  }
+
   getCategories() {
     this.categories = [
       {
         id: 1,
-        label: 'All',
+        label: 'Todos',
         image: 'assets/images/icons/all.png',
         active: true,
       },
@@ -37,7 +52,7 @@ export class ListingPage implements OnInit {
       },
       {
         id: 3,
-        label: 'Dishes',
+        label: 'Platos',
         image: 'assets/images/icons/dish.png',
         active: false,
       },

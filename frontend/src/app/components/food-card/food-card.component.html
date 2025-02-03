@@ -6,7 +6,7 @@
     <h2 class="subtitle"> <sup>$</sup> {{ item.price | number:'1.2' }} </h2>
 
     <ion-buttons>
-      <ion-button>
+      <ion-button (click)="addToCart(item)">
         <ion-icon slot="icon-only" name="add" ></ion-icon>
       </ion-button>
     </ion-buttons>

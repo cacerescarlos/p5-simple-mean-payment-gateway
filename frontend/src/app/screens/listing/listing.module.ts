@@ -10,6 +10,7 @@ import { ListingPage } from './listing.page';
 import { SearchBarModule } from 'src/app/components/searchbar/searchbar.module';
 import { CategoryModule } from 'src/app/components/category-item/category-item.module';
 import { FoodCardModule } from 'src/app/components/food-card/food-card.module';
+import { FoodService } from 'src/app/services/food.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { FoodCardModule } from 'src/app/components/food-card/food-card.module';
     CategoryModule,
     FoodCardModule
   ],
-  declarations: [ListingPage]
+  declarations: [ListingPage],
+  providers:[FoodService]
 })
 export class ListingPageModule {}

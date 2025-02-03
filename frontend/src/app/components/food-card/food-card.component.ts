@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Food } from 'src/app/models/food.model';
 
 @Component({
@@ -10,5 +10,11 @@ import { Food } from 'src/app/models/food.model';
 export class FoodCardComponent   {
 
   @Input() item!: Food;
+  @Output() addToCartEvent = new EventEmitter<any>(); // ✅ Output para emitir el evento
+
+   addToCart(item: any): void {
+    this.addToCartEvent.emit(item);
+
+  }
 
 }
